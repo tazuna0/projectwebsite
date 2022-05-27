@@ -37,4 +37,5 @@ function minerHire() {
 
 setInterval(function() {
     pyrite = pyrite + miners;
+    document.getElementById('pyrite').innerText = "Py: " + pyrite;
 }, 1000);
