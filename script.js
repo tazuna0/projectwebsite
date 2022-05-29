@@ -14,7 +14,7 @@ function enhancement() {
     if (pyrite >= pickaxecost) {
         pyrite = pyrite - pickaxecost;
         enhancements = enhancements + 1; 
-        pickaxecost = Math.round(10*enhancements*(Math.log(enhancements)+10)) // this is disasterous //
+        pickaxecost = Math.round(10*enhancements*(Math.log(enhancements)) // this is disasterous //
 
         document.getElementById('pyrite').innerText = "Py: " + pyrite;
         document.getElementById('pickaxecost').innerText = pickaxecost;
@@ -26,7 +26,7 @@ function minerHire() {
     if (pyrite >= minercost) {
         pyrite = pyrite - minercost;
         miners = miners + 1; 
-        minercost = Math.round(minercost * (2 + minerscaling))
+        minercost = Math.round(minercost * (1.20 + minerscaling))
         minerscaling = minerscaling + 0.01;
 
         document.getElementById('pyrite').innerText = "Py: " + pyrite;
