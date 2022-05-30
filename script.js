@@ -11,22 +11,26 @@ document.getElementById('gamestart').onclick = function() {
     gameTitle.parentNode.remove()
 }
 
-var pyrite = 0;
+var pyrite = 10000;
 var miningPower = 1 
 var PyperSecond = 0
 var pickaxecost = 20;
 var enhancements = 0;
 var minercost = 100;
 var miners = 0; 
-var scaling = 0.01;
+var minerscaling = 0.01;
+var hatscaling = 0.01;
+var lanternscaling = 0.01;
 var drillcost = 500;
 var drills = 0;
 var hatcost = 650;
-var hats = 0
+var hats = 0;
 var lanterncost = 650;
-var lanterns = 0
-var environmentcost = 2000
-var environments = 0
+var lanterns = 0;
+var environmentcost = 3000;
+var environments = 0;
+var excavatorcost = 5000;
+var excavators = 0;
 
 var goldbarcost = 8401200
 
@@ -37,7 +41,7 @@ function gainPyrite(amount) {
 
 
 function updatePyPerClick() {
-    miningPower = 1 + enhancements + (drills*5)
+    miningPower = 1 + enhancements + (drills*5) + (excavators*50)
     document.getElementById('pyperclick').innerText = miningPower;
 }
 
@@ -63,8 +67,8 @@ function minerHire() {
     if (pyrite >= minercost) {
         pyrite = pyrite - minercost;
         miners = miners + 1; 
-        minercost = Math.round(minercost * (1 + scaling))
-        scaling = scaling + 0.01;
+        minercost = Math.round(minercost * (1 + minerscaling))
+        minerscaling = minerscaling + 0.01;
 
         document.getElementById('pyrite').innerText = "Py: " + pyrite;
         document.getElementById('minercost').innerText = minercost;
@@ -90,8 +94,8 @@ function hatGet() {
     if (pyrite >= hatcost) {
         pyrite = pyrite - hatcost;
         hats = hats + 1;
-        hatcost = Math.round(hatcost * (1.20 + scaling))
-        scaling = scaling + 0.01;
+        hatcost = Math.round(hatcost * (1.20 + hatscaling))
+        hatscaling = hatscaling + 0.01;
 
         document.getElementById('pyrite').innerText = "Py: " + pyrite;
         document.getElementById('hatcost').innerText = hatcost;
@@ -104,8 +108,8 @@ function lanternGet() {
     if (pyrite >= lanterncost) {
         pyrite = pyrite - lanterncost;
         lanterns = lanterns + 1;
-        lanterncost = Math.round(lanterncost * (1.20 + scaling))
-        scaling = scaling + 0.01;
+        lanterncost = Math.round(lanterncost * (1.20 + lanternscaling))
+        lanternscaling = lanternscaling + 0.01;
 
         document.getElementById('pyrite').innerText = "Py: " + pyrite;
         document.getElementById('lanterncost').innerText = lanterncost;
@@ -117,13 +121,15 @@ function lanternGet() {
 function corporateEnvironment() {
     if (pyrite >= environmentcost) {
         pyrite = pyrite - environmentcost;
+        environments = environments + 1
         lanterns = lanterns * 2
         miners = miners * 2
         enhancements = enhancements * 2
         drills = drills * 2
         hats = hats * 2
+        excavators = excavators * 2
         
-        environmentcost = environmentcost * 2
+        environmentcost = environmentcost ** 2
 
         document.getElementById('pyrite').innerText = "Py: " + pyrite;
         document.getElementById('environmentcost').innerText = environmentcost;
@@ -133,10 +139,24 @@ function corporateEnvironment() {
         document.getElementById('lanterns').innerText = lanterns;
         document.getElementById('miners').innerText = miners;
         document.getElementById('drills').innerText = drills;
+        document.getElementById('excavators').innerText = excavators;
         updatePyPerSecond()
         updatePyPerClick()
     }
 
+}
+
+function excavatorGet() {
+    if (pyrite >= excavatorcost) {
+        pyrite = pyrite - excavatorcost;
+        excavators = excavators + 1; 
+        pickaxecost = Math.round(10*excavators*(Math.log(excavatorcost))) 
+        updatePyPerClick()
+
+        document.getElementById('pyrite').innerText = "Py: " + pyrite;
+        document.getElementById('excavatorcost').innerText = excavatorcost;
+        document.getElementById('excavators').innerText = excavators;
+    }
 }
 
 setInterval(function() {
