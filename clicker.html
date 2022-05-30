@@ -22,14 +22,38 @@
 </div>
 </header>
 
-<center class="center">
+<center id="startcenter">
+<br><br><br>
+<div class="title" id="title">Pyrite Umbrage</div>
+<div class="gametext" id="gametext">text</div>
+<button class="round" class="gamestart" id="gamestart">Start MINING!</button>
+</center>
+<center class="center" id="center">
 <div id="pyrite">Py: 0</div>
-<img class="round" src="https://images.emojiterra.com/twitter/v13.1/512px/26cf.png" width="150" onclick="gainPyrite(1 + enhancements)"></img>
+<div>Py/Click: <span id="pyperclick">0</span>     Py/Sec: <span id="pypersecond">0</span></div>
+
+<img class="round" src="https://images.emojiterra.com/twitter/v13.1/512px/26cf.png" width="150" onclick="gainPyrite(miningPower)"></img>
 <br><br>
-<button class="round" onclick="enhancement()">Enhance pickaxe: <span id="pickaxecost">20</span><br>Amount:
-<span id="enhancements">0</span></button>
+<button class="round" onclick="enhancement()">Enhance pickaxe: <span id="pickaxecost">20</span><br>
+Amount:
+<span id="enhancements">0</span><br>
+Desc: Enhanced pickaxes increase<br> your haul of Pyrite.</button>
 <button class="round" onclick="minerHire()">Hire miners: <span id="minercost">100</span><br>Amount:
- <span id="miners">0</span></button>
+<span id="miners">0</span><br>
+Desc: Miners automatically collect<br>Pyrite for you.</button>
+<br>
+<button class="round" onclick="drillGet()">Acquire drills: <span id="drillcost">500</span><br>Amount:
+<span id="drills">0</span><br>
+Desc: More drills = Better hauls!!!</button>
+<button class="round" onclick="hatGet()">Hard hats: <span id="hatcost">650</span><br>Amount:
+<span id="hats">0</span><br>
+Desc: Increase the work production<br> of your miners.</button>
+<button class="round" onclick="lanternGet()">Lanterns: <span id="lanterncost">650</span><br>Amount:
+<span id="lanterns">0</span><br>
+Desc: Increase the work production<br> of your miners... again</button> <br>
+<button class="round" onclick="corporateEnvironment()">Corporate environment: <span id="environmentcost">2000</span><br>Amount:
+<span id="environments">0</span><br>
+Desc: Doubles your current arsenal.</button>
 </center>
 
 <script src="script.js"></script>

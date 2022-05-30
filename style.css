@@ -66,6 +66,14 @@ body {
     background-size: cover;
 }
 
+.title {
+    text-align: center;
+    color: black;
+    font-size: 40px;
+    border-bottom: 1px solid #ccc;
+    font-family: 'Poppins', sans-serif;
+}
+
 #pyrite {
     margin-top: 50px;
     font-size: 30px;
@@ -106,4 +114,68 @@ body {
 
 .center button {
     font-family: 'Poppins', sans-serif
+}
+
+.center div {
+    font-family: 'Poppins', sans-serif
+}
+
+#title {
+    opacity: 1;
+    -webkit-transition: opacity 0.3s ease-in-out;
+    -moz-transition: opacity 0.3s ease-in-out;
+    -ms-transition: opacity 0.3s ease-in-out;
+    -o-transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
+}
+
+#title.fade {
+    opacity: 0;
+}
+
+#gametext {
+    opacity: 1;
+    -webkit-transition: opacity 0.3s ease-in-out;
+    -moz-transition: opacity 0.3s ease-in-out;
+    -ms-transition: opacity 0.3s ease-in-out;
+    -o-transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
+}
+
+#gametext.fade {
+    opacity: 0;
+}
+
+#gamestart {
+    opacity: 1;
+    -webkit-transition: opacity 0.3s ease-in-out;
+    -moz-transition: opacity 0.3s ease-in-out;
+    -ms-transition: opacity 0.3s ease-in-out;
+    -o-transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
+}
+
+#gamestart.fade {
+    opacity: 0;
+}
+
+#center {
+    opacity: 0;
+    -webkit-transition: opacity 0.3s ease-in-out;
+    -moz-transition: opacity 0.3s ease-in-out;
+    -ms-transition: opacity 0.3s ease-in-out;
+    -o-transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
+}
+
+#center.fade {
+    opacity: 1;
+}
+
+#pyperclick {
+    font-weight: bold;
+}
+
+#pypersecond {
+    font-weight: bold;     
 }
