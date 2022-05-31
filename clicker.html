@@ -1,3 +1,4 @@
+<!DOCTYPE xhtml>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -25,13 +26,7 @@
 <center id="startcenter">
 <br><br><br>
 <div class="title" id="title">Pyrite Umbrage</div>
-<div class="gametext" id="gametext">You are a self-employed Mine Manager. Recently, your crew has managed to find a vein so huge, you can consider yourself retired! <br>
-What's more, you're led to believe that this vein is full of GOLD! You know, that shiny yellow stuff! Overjoyed at this information, you seek to mine out the vein as soon as possible. <br>
-However, things take a turn. You and your crew find out this is actually a vein of Pyrite, or more commonly known as "Fool's Gold". <br>
-You've been foiled. Absolutely tricked by the tectonic shifts of the earth. Distraught by this newfound information, you feel a new ember arise within you. <br>
-You think God can just come in here and take away your miracle like it's nothing? You're gonna fight back. Shove this pyrite all up in g You're going to mine out this entire Pyrite vein for all it's worth! <br>
-And then... with all your newfound Pyrite. You'll buy a gold bar. Big enough to flaunt to everyone in the world, show them who's boss. They will carve your name on that gold bar, for eons to remember! <br>
-As for now, your journey starts here. </div>
+<div class="gametext" id="gametext">AH!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! PYRITE AH!! SO MUCH! AH!!!!!!!!! </div>
 <button class="round" class="gamestart" id="gamestart">Start MINING!</button>
 </center>
 <center class="center" id="center">
@@ -69,10 +64,17 @@ Desc: Increases quality of the miners.</button> <br>
 <button class="round" onclick="titanDrillGet()">Titan Drill: <span id="titandrillcost">50000</span><br>Amount:
 <span id="titandrills">0</span><br>
 Desc: Leave no Pyrite left behind.</button>
-<button class="round" onclick="titanDrillGet()">Titan Drill: <span id="titandrillcost">50000</span><br>Amount:
-    <span id="titandrills">0</span><br>
-    Desc: Leave no Pyrite left behind.</button>
+<button class="round" onclick="truckGet()">Trucks: <span id="truckcost">75000</span><br>Amount:
+<span id="trucks">0</span><br>
+Desc: Miners can now easily transport Pyrite.</button>
+<button class="round" onclick="businessGet()">Business Meeting: <span id="meetingcost">60000</span><br>Amount:
+<span id="meetings">0</span><br>
+Desc: Increases the effectiveness of your Pyrite gain per Click and per Second.</button><br>
+<button class="round" id="goldbar" onclick="goldbarGet()">Gold Bar: <span id="goldbarcost">8401200</span><br>Amount:
+<span id="goldbar">0</span><br>
+Desc: What you've been looking for...</button><br>
 </center>
+
 
 <script src="script.js"></script>
 </body>

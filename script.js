@@ -2,6 +2,7 @@ var gameTitle = document.getElementById('title');
 var gameText = document.getElementById('gametext');
 var startButton = document.getElementById('gamestart');
 var gameitself = document.getElementById('center')
+var goldbarbutton = document.getElementById('goldbar')
 
 document.getElementById('gamestart').onclick = function() {
     gameTitle.classList.toggle('fade')
@@ -35,8 +36,13 @@ var overseercost = 7500;
 var overseers = 0;
 var titandrillcost = 50000;
 var titandrills = 0;
+var truckcost = 75000;
+var trucks = 0;
+var meetingcost = 60000;
+var meetings = 0;
 
-var goldbarcost = 8401200
+var goldbarcost = 8401200;
+var goldbar = 0;
 
 function gainPyrite(amount) {
     pyrite = pyrite + amount;
@@ -45,12 +51,12 @@ function gainPyrite(amount) {
 
 
 function updatePyPerClick() {
-    miningPower = 1 + enhancements + (drills*5) + (excavators*50) + (titandrills*500)
+    miningPower = 1 + enhancements + (drills*5) + (excavators*50) + (titandrills*500) + (meetings*250)
     document.getElementById('pyperclick').innerText = miningPower;
 }
 
 function updatePyPerSecond() {
-    PyperSecond = miners + (lanterns*10) + (hats*10) + (overseers*100)
+    PyperSecond = miners + (lanterns*10) + (hats*10) + (overseers*100) + (trucks*1000) + (meetings*250)
     document.getElementById('pypersecond').innerText = PyperSecond;
 }
 
@@ -72,7 +78,7 @@ function minerHire() {
         pyrite = pyrite - minercost;
         miners = miners + 1; 
         minercost = Math.round(minercost * (1 + minerscaling))
-        minerscaling = minerscaling + 0.01;
+        minerscaling = minerscaling + 0.005;
 
         document.getElementById('pyrite').innerText = "Py: " + pyrite;
         document.getElementById('minercost').innerText = minercost;
@@ -98,7 +104,7 @@ function hatGet() {
     if (pyrite >= hatcost) {
         pyrite = pyrite - hatcost;
         hats = hats + 1;
-        hatcost = Math.round(hatcost * (1.20 + hatscaling))
+        hatcost = Math.round(hatcost * (1.10 + hatscaling))
         hatscaling = hatscaling + 0.01;
 
         document.getElementById('pyrite').innerText = "Py: " + pyrite;
@@ -112,7 +118,7 @@ function lanternGet() {
     if (pyrite >= lanterncost) {
         pyrite = pyrite - lanterncost;
         lanterns = lanterns + 1;
-        lanterncost = Math.round(lanterncost * (1.20 + lanternscaling))
+        lanterncost = Math.round(lanterncost * (1.10 + lanternscaling))
         lanternscaling = lanternscaling + 0.01;
 
         document.getElementById('pyrite').innerText = "Py: " + pyrite;
@@ -132,6 +138,10 @@ function corporateEnvironment() {
         drills = drills * 2
         hats = hats * 2
         excavators = excavators * 2
+        overseers = overseers * 2
+        titandrills = titandrills * 2
+        trucks = trucks * 2
+        meetings = meetings * 2
         
         environmentcost = environmentcost ** 2
 
@@ -144,6 +154,10 @@ function corporateEnvironment() {
         document.getElementById('miners').innerText = miners;
         document.getElementById('drills').innerText = drills;
         document.getElementById('excavators').innerText = excavators;
+        document.getElementById('overseers').innerText = overseers;
+        document.getElementById('titandrills').innerText = titandrills;
+        document.getElementById('trucks').innerText = trucks;
+        document.getElementById('meetings').innerText = meetings;
         updatePyPerSecond()
         updatePyPerClick()
     }
@@ -167,8 +181,8 @@ function mineOverseerGet() {
     if (pyrite >= overseercost) {
         pyrite = pyrite - overseercost;
         overseers = overseers + 1; 
-        overseercost = Math.round(overseercost * (1.20 + minerscaling))
-        minerscaling = minerscaling + 0.01;
+        overseercost = Math.round(overseercost * (1.15 + minerscaling))
+        minerscaling = minerscaling + 0.005;
 
         document.getElementById('pyrite').innerText = "Py: " + pyrite;
         document.getElementById('overseercost').innerText = overseercost;
@@ -190,10 +204,48 @@ function titanDrillGet() {
     }
 }
 
+function truckGet() {
+    if (pyrite >= truckcost) {
+        pyrite = pyrite - truckcost;
+        trucks = trucks + 1; 
+        truckcost = truckcost + 60000
+        
+        document.getElementById('pyrite').innerText = "Py: " + pyrite;
+        document.getElementById('truckcost').innerText = truckcost;
+        document.getElementById('trucks').innerText = trucks;
+        updatePyPerSecond()
+    }
+}
+
+function businessGet() {
+    if (pyrite >= meetingcost) {
+        pyrite = pyrite - meetingcost;
+        meetings = meetings + 1; 
+        meetingcost = Math.round(meetingcost * 1.33)
+        
+        document.getElementById('pyrite').innerText = "Py: " + pyrite;
+        document.getElementById('meetingcost').innerText = meetingcost;
+        document.getElementById('meetings').innerText = meetings;
+        updatePyPerSecond()
+        updatePyPerClick()
+    }
+}
+
+function goldbarGet() {
+    if (pyrite >= goldbarcost) {
+        pyrite = pyrite - goldbarcost;
+        goldbar = goldbar + 1; 
+        
+        goldbarbutton.parentNode.remove()
+    }
+}
+
 setInterval(function() {
     pyrite = pyrite + miners;
     pyrite = pyrite + lanterns * 10
     pyrite = pyrite + hats * 10
     pyrite = pyrite + overseers * 100
+    pyrite = pyrite + trucks * 1000
+    pyrite = pyrite + meetings * 250
     document.getElementById('pyrite').innerText = "Py: " + pyrite;
 }, 1000);
