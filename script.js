@@ -12,7 +12,7 @@ document.getElementById('gamestart').onclick = function() {
     gameTitle.parentNode.remove()
 }
 
-var pyrite = 10000000;
+var pyrite = 0;
 var miningPower = 1 
 var PyperSecond = 0
 var pickaxecost = 20;
