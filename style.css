@@ -1,7 +1,7 @@
 .header {
     display: flex;
     justify-content: space-evenly;
-    border-bottom: 3px solid #ccc;
+    border-bottom: 3px solid #ddd;
     padding-top: 3px;
     padding-bottom: 3px;
 }
@@ -38,6 +38,7 @@ a {
     margin-left: auto;
     margin-right: auto;
     padding-bottom: 20px;
+    position: relative;
 }
 
 .item1 {
@@ -61,17 +62,25 @@ a {
 }
 
 body {
-    background-image: url(https://i.stack.imgur.com/1Tzky.png);
+    background-image: url(https://i.pinimg.com/originals/24/f4/99/24f499dd17eafd869ad5ddbd7e895e44.jpg), url(https://www.seekpng.com/png/full/106-1063866_white-circle-fade-png-white-blurry-circle-png.png);
     background-repeat: no-repeat;
     background-size: cover;
+    margin: 0;
+    padding: 0;
 }
+
+
 
 .title {
     text-align: center;
     color: black;
     font-size: 40px;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 2px solid #ddd;
     font-family: 'Poppins', sans-serif;
+}
+
+.gametext {
+    padding-top: 20px;
 }
 
 #pyrite {
@@ -140,6 +149,7 @@ body {
     -ms-transition: opacity 0.3s ease-in-out;
     -o-transition: opacity 0.3s ease-in-out;
     transition: opacity 0.3s ease-in-out;
+    font-family: 'Poppins', sans-serif;
 }
 
 #gametext.fade {

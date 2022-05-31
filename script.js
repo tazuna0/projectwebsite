@@ -11,7 +11,7 @@ document.getElementById('gamestart').onclick = function() {
     gameTitle.parentNode.remove()
 }
 
-var pyrite = 10000;
+var pyrite = 10000000;
 var miningPower = 1 
 var PyperSecond = 0
 var pickaxecost = 20;
@@ -31,6 +31,10 @@ var environmentcost = 1000;
 var environments = 0;
 var excavatorcost = 5000;
 var excavators = 0;
+var overseercost = 7500;
+var overseers = 0;
+var titandrillcost = 50000;
+var titandrills = 0;
 
 var goldbarcost = 8401200
 
@@ -41,12 +45,12 @@ function gainPyrite(amount) {
 
 
 function updatePyPerClick() {
-    miningPower = 1 + enhancements + (drills*5) + (excavators*50)
+    miningPower = 1 + enhancements + (drills*5) + (excavators*50) + (titandrills*500)
     document.getElementById('pyperclick').innerText = miningPower;
 }
 
 function updatePyPerSecond() {
-    PyperSecond = miners + (lanterns*10) + (hats*10)
+    PyperSecond = miners + (lanterns*10) + (hats*10) + (overseers*100)
     document.getElementById('pypersecond').innerText = PyperSecond;
 }
 
@@ -150,7 +154,7 @@ function excavatorGet() {
     if (pyrite >= excavatorcost) {
         pyrite = pyrite - excavatorcost;
         excavators = excavators + 1; 
-        pickaxecost = Math.round(10*excavators*(Math.log(excavatorcost))) 
+        excavatorcost = Math.round(excavatorcost * 1.35) 
         updatePyPerClick()
 
         document.getElementById('pyrite').innerText = "Py: " + pyrite;
@@ -159,9 +163,37 @@ function excavatorGet() {
     }
 }
 
+function mineOverseerGet() {
+    if (pyrite >= overseercost) {
+        pyrite = pyrite - overseercost;
+        overseers = overseers + 1; 
+        overseercost = Math.round(overseercost * (1.20 + minerscaling))
+        minerscaling = minerscaling + 0.01;
+
+        document.getElementById('pyrite').innerText = "Py: " + pyrite;
+        document.getElementById('overseercost').innerText = overseercost;
+        document.getElementById('overseers').innerText = overseers;
+        updatePyPerSecond()
+    }
+}
+
+function titanDrillGet() {
+    if (pyrite >= titandrillcost) {
+        pyrite = pyrite - titandrillcost;
+        titandrills = titandrills + 1; 
+        titandrillcost = Math.round(titandrillcost * 1.50)
+        updatePyPerClick()
+
+        document.getElementById('pyrite').innerText = "Py: " + pyrite;
+        document.getElementById('titandrillcost').innerText = titandrillcost;
+        document.getElementById('titandrills').innerText = titandrills;
+    }
+}
+
 setInterval(function() {
     pyrite = pyrite + miners;
     pyrite = pyrite + lanterns * 10
     pyrite = pyrite + hats * 10
+    pyrite = pyrite + overseers * 100
     document.getElementById('pyrite').innerText = "Py: " + pyrite;
 }, 1000);
