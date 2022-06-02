@@ -3,6 +3,7 @@ var gameText = document.getElementById('gametext');
 var startButton = document.getElementById('gamestart');
 var gameitself = document.getElementById('center')
 var goldbarbutton = document.getElementById('goldbar')
+var endgame = document.getElementById('endcenter')
 
 document.getElementById('gamestart').onclick = function() {
     gameTitle.classList.toggle('fade')
@@ -236,6 +237,7 @@ function goldbarGet() {
         pyrite = pyrite - goldbarcost;
         goldbar = goldbar + 1; 
         
+        endgame.classList.toggle('fade')
         goldbarbutton.parentNode.remove()
     }
 }
